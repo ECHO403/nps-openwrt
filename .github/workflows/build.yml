@@ -101,8 +101,8 @@ jobs:
           cp -f feeds.conf.default feeds.conf
           tmp="$(mktemp)"
           {
-            echo "src-git nps https://github.com/${{ github.repository }}.git"
             cat feeds.conf
+            echo "src-git nps https://github.com/${{ github.repository }}.git"
           } > "$tmp"
           mv "$tmp" feeds.conf
 
