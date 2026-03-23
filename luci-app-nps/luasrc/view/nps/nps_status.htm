@@ -1,0 +1,23 @@
+<script type="text/javascript">//<![CDATA[
+XHR.poll(3, '<%=url([[admin]], [[services]], [[nps]], [[status]])%>', null,
+	function(x, data) {
+		var tb = document.getElementById('nps_status');
+		if (data && tb) {
+			if (!data.installed) {
+				tb.innerHTML = '<em><b><font color="red">NPS <%:NOT INSTALLED%></font></b></em>';
+			} else if (data.running) {
+				tb.innerHTML = '<em><b><font color=green>NPS(' + data.version + ') <%:RUNNING%></font></b></em>';
+			} else {
+				tb.innerHTML = '<em><b><font color=red>NPS(' + data.version + ') <%:NOT RUNNING%></font></b></em>';
+			}
+		}
+	}
+);
+//]]>
+</script>
+<style>.mar-10 {margin-left: 50px; margin-right: 10px;}</style>
+<fieldset class="cbi-section">
+	<p id="nps_status">
+		<em><%:Collecting data...%></em>
+	</p>
+</fieldset>
